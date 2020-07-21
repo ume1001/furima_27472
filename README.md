@@ -7,7 +7,7 @@
 |password|string|null: false|
 |username|string|null: false|
 |kana|string|null: false|
-|birthDate|datetime|null: false|
+|birthDate|integer|null: false|
 ### Association
 - has_many :items
 - has_many :comments
