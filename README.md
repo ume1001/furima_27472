@@ -5,9 +5,10 @@
 |nickname|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
-|first_ame|string|null: false|
-|last_ame|string|null: false|
-|kana|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_kana|string|null: false|
+|last_kana|string|null: false|
 |birthDate|integer|null: false|
 ### Association
 - has_many :items
@@ -19,16 +20,12 @@
 |image|text|null: false|
 |name|string|null: false|
 |text|text|null: false|
-|status|string|null: false|
-|deliveryFee|string|null: false|
-|area|string|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|customer_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
-- belong_to :customer
+- belong_to :address
 - belong_to :category
 - has_many :comments
 
@@ -42,18 +39,14 @@
 - belongs_to :item
 - belongs_to :user
 
-## customersテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card|integer|null: false|
-|address|integer|null: false|
+|postal_code|integer|null: false|
+|prefectures|integer|null: false|
+|city|integer|null: false|
+|address|text|null: false|
+|building|text|null: false|
 |phone|integer|null: false|
-### Association
-- has_many :items
-
-## categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|integer|null: false|
 ### Association
 - has_many :items
