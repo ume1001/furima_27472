@@ -17,7 +17,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|text|null: false|
-|itemName|string|null: false|
+|name|string|null: false|
 |text|text|null: false|
 |status|string|null: false|
 |deliveryFee|string|null: false|
