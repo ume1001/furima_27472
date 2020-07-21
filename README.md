@@ -5,7 +5,8 @@
 |nickname|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
-|username|string|null: false|
+|first_ame|string|null: false|
+|last_ame|string|null: false|
 |kana|string|null: false|
 |birthDate|integer|null: false|
 ### Association
