@@ -9,7 +9,7 @@
 |last_name|string|null: false|
 |first_kana|string|null: false|
 |last_kana|string|null: false|
-|birthDate|integer|null: false|
+|birth_date|integer|null: false|
 ### Association
 - has_many :items
 - has_many :comments
@@ -21,6 +21,9 @@
 |image|text|null: false|
 |name|string|null: false|
 |text|text|null: false|
+|status|integer|null: false|
+|deliveryFee|integer|null: false|
+|area|integer|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
