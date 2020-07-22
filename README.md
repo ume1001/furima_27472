@@ -13,6 +13,7 @@
 ### Association
 - has_many :items
 - has_many :comments
+- has_many :transactions
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -22,12 +23,11 @@
 |text|text|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
-- belong_to :address
-- belong_to :category
+- has_many :addresses
 - has_many :comments
+- has_many :transactions
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -47,6 +47,20 @@
 |city|integer|null: false|
 |address|text|null: false|
 |building|text|null: false|
-|phone|integer|null: false|
+|phone|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many :items
+- belongs_to :item
+- has_many :transactions
+
+## transactionテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+|addresses_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+- belongs_to :addresses
