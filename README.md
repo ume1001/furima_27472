@@ -13,7 +13,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :transactions
+- has_many :item_purchases
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -27,7 +27,7 @@
 - belong_to :user
 - has_many :addresses
 - has_many :comments
-- has_many :transactions
+- has_many :item_purchases
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -51,16 +51,12 @@
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
-- has_many :transactions
 
-## transactionテーブル
+## item_purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-|addresses_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :addresses
