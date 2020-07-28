@@ -9,21 +9,21 @@ class User < ApplicationRecord
   has_many :item_purchases
 
   with_options presence: true do
-    validates :nickname, uniqueness: true
+    validates :nickname, uniqueness: { case_sensitive: true }
 
-    # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, format: { with: VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false }
 
-    # VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,100}\z/
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6,100}\z/ }, confirmation: true
+    VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,100}\z/
+    validates :password, format: { with: VALID_PASSWORD_REGEX }, confirmation: true
 
-    # VALID_NAME_REGEX =/\A[ぁ-んァ-ン一-龥]/
-    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    VALID_NAME_REGEX =/\A[ぁ-んァ-ン一-龥]/
+    validates :first_name, format: { with: VALID_NAME_REGEX }
+    validates :last_name, format: { with: VALID_NAME_REGEX }
 
-    # VALID_KANA_REGEX =/\A[ァ-ヶー－]+\z/
-    validates :first_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :last_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+    VALID_KANA_REGEX =/\A[ァ-ヶー－]+\z/
+    validates :first_kana, format: { with: VALID_KANA_REGEX }
+    validates :last_kana, format: { with: VALID_KANA_REGEX }
 
     validates :birth_date
   end
