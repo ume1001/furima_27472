@@ -1,10 +1,12 @@
-class PostsController < ApplicationController
+class UsersController < ApplicationController
   # before_action :move_to_index, except: [:index]
 
   def index
+    @item = Item.all
   end
 
   def new
+    @item = Item.new
   end
 
   def create
@@ -21,15 +23,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
-end
 
-private
-def user_params
-  params.require(:user).permit(:name, :password, :email)
+  private
 
-  # def move_to_index
-  # unless user_signed_in?
-  # redirect_to action: :index
-  # end
+  def user_params
+    params.require(:user).permit(:name, :password, :email)
+  end
 end
