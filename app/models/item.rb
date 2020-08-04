@@ -8,10 +8,12 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
-  has_one_attached :image
-  validates :text, presence: true
-  validates :name, presence: true
-  validates :price, presence: true
+  with_options presence: true do
+    has_one_attached :image
+    validates :text
+    validates :name
+    validates :price
+  end
 
   with_options numericality: { other_than: 1 } do
     validates :category_id

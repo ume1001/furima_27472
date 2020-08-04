@@ -31,10 +31,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :email)
   end
-
-  # def move_to_index
-  # unless user_signed_in?
-  # redirect_to action: :index
-  # end
-  # end
 end
