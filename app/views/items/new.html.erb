@@ -7,9 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
      <%= render 'shared/error_messages', model: @item %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -104,14 +102,12 @@
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>
-            <%# <span id='application'></span>円 %>
             <div id="prices" style="display: inline-block; _display: inline;"></div>円
           </span>
         </div>
         <div class="price-content">
           <span>販売利益</span>
           <span>
-            <%#span id='profit'></span>円 %>
             <div id="profit" style="display: inline-block; _display: inline;"></div>円
         </div>
         </span>
@@ -141,7 +137,6 @@
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "出品する", class:"sell-btn" %>
-      <%#= f.submit "出品する", item_path, method: show, class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>

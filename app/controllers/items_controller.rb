@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :show, :update, :edit]
 
   def index
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
 
   def new
     @item = Item.new
-    # @item = Item.new(params[:keyword])
     respond_to do |format|
       format.html
       format.json
@@ -15,25 +14,21 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # @user = User.find(params[:id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path # id: current_user.id
+      redirect_to root_path 
     else
       render :new
     end
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private

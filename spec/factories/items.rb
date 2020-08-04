@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    image           { File.open("#{Rails.root}/public/images/test_image.jpg") }
+    image           { File.open("#{Rails.root}/spec/fixtures/test_image.jpg") }
     name            { 'aaa' }
     text            { 'aaa' }
     category_id        { 3 } # { FactoryBot.create(:name) }#{ 'レデース' }
