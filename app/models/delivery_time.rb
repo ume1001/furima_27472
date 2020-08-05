@@ -1,4 +1,4 @@
-class DeliveryTime < ActiveHash::Base
+class Deliverytime < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
   self.data = [

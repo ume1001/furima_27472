@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.find(params[:id])
   end
 
   def purchase
@@ -46,9 +47,9 @@ class ItemsController < ApplicationController
       :text,
       :category_id,
       :status_id,
-      :deliveryFee_id,
+      :deliveryfee_id,
       :area_id,
-      :deliveryTime_id,
+      :deliverytime_id,
       :price,
       :purchase_id
     ).merge(user_id: current_user.id)
