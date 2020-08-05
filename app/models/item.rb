@@ -2,9 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :status
-  belongs_to_active_hash :deliveryFee
+  belongs_to_active_hash :deliveryfee
   belongs_to_active_hash :area
-  belongs_to_active_hash :deliveryTime
+  belongs_to_active_hash :deliverytime
 
   belongs_to :user
   has_one :item_order
@@ -20,10 +20,10 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
-    validates :deliveryFee_id
+    validates :deliveryfee_id
     validates :area_id
-    validates :deliveryTime_id
+    validates :deliverytime_id
   end
-  
+
   has_one :item_purchase
 end

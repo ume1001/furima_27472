@@ -1,4 +1,4 @@
-class DeliveryFee < ActiveHash::Base
+class Deliveryfee < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
   self.data = [
