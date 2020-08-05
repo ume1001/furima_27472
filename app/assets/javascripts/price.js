@@ -8,6 +8,14 @@ $(function(){
       data: { keyword: input },
       dataType: 'json'
     })
+
+    //$.ajax( {
+      //type: 'GET',
+      //url: '/items/:id/edit',
+      //data: { keyword: input },
+      //dataType: 'json'
+    //})
+
     .done(function(item) {
       let price = Number($('#item_price').val());
       var item = price * 0.10;
