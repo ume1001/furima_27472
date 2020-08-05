@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  #describe Item do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
@@ -74,13 +73,13 @@ RSpec.describe Item, type: :model do
       it 'is invalid without a price that has less than 300 yen' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors[:price]).to include()
+        expect(@item.errors[:price]).to include
       end
 
       it 'is invalid without a price that has more than 9,999,999 yen' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors[:price]).to include()
+        expect(@item.errors[:price]).to include
       end
     end
   end

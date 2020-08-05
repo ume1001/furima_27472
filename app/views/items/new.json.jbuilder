@@ -1,1 +1,1 @@
-json.price @item.price
+json.price @items.price
