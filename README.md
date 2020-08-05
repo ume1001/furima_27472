@@ -28,7 +28,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
-- has_one :addresses
+- has_one :address
 - has_many :comments
 - has_many :item_purchases
 

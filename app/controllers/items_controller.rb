@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @items_purchaser = Product.find(params[:id])
+    @items_purchaser = Item.find(params[:id])
     @items_purchaser.update(purchase_id: current_user.id)
   end
 

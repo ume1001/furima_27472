@@ -24,8 +24,6 @@ class Item < ApplicationRecord
     validates :area_id
     validates :deliveryTime_id
   end
-
-  # has_one :addresses
-  # has_many :comments
+  
   has_one :item_purchase
 end
