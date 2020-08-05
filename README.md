@@ -22,8 +22,9 @@
 |name|string|null: false|
 |text|text|null: false|
 |status|integer|null: false|
-|deliveryFee|integer|null: false|
+|deliveryfee|integer|null: false|
 |area|integer|null: false|
+|deliverytime|integer|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association

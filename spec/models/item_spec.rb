@@ -46,10 +46,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:status_id]).to include('is not a number')
       end
 
-      it 'is invalid without a deliveryFee' do
-        @item.deliveryFee_id = nil
+      it 'is invalid without a deliveryfee' do
+        @item.deliveryfee_id = nil
         @item.valid?
-        expect(@item.errors[:deliveryFee_id]).to include('is not a number')
+        expect(@item.errors[:deliveryfee_id]).to include('is not a number')
       end
 
       it 'is invalid without a area' do
@@ -58,10 +58,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:area_id]).to include('is not a number')
       end
 
-      it 'is invalid without a deliveryTime' do
-        @item.deliveryTime_id = nil
+      it 'is invalid without a deliverytime' do
+        @item.deliverytime_id = nil
         @item.valid?
-        expect(@item.errors[:deliveryTime_id]).to include('is not a number')
+        expect(@item.errors[:deliverytime_id]).to include('is not a number')
       end
 
       it 'is invalid without a price' do
