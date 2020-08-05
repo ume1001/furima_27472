@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :update, :edit]
-  before_action :find_item, only: :purchase
+  before_action :move_to_index, except: [:index, :show]
+  before_action :find_item, only: [:show, :purchase]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -34,8 +34,8 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @items_purchaser = Item.find(params[:id])
-    @items_purchaser.update(purchase_id: current_user.id)
+    @items = Item.find(params[:id])
+    @items.update(purchase_id: current_user.id)
   end
 
   private
