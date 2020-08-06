@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :find_item, only: [:show, :edit, :update, :purchase]
+  before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -35,6 +35,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @items.destroy
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def purchase
