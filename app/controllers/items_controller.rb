@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :find_item, only: [:show, :purchase]
+  before_action :find_item, only: [:show, :edit, :update, :purchase]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -27,14 +27,17 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @items.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end
 
   def show
-    @items = Item.find(params[:id])
   end
 
   def purchase
-    @items = Item.find(params[:id])
     @items.update(purchase_id: current_user.id)
   end
 
@@ -60,6 +63,6 @@ class ItemsController < ApplicationController
   end
 
   def find_item
-    @item = Item.find(params[:id]) # 購入する商品を特定
+    @items = Item.find(params[:id]) # 購入する商品を特定
   end
 end
