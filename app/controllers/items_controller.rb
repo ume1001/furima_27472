@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @items = Item.new(item_params)
     if @items.save
       redirect_to root_path
@@ -48,28 +47,19 @@ class ItemsController < ApplicationController
   end
 
   def purchase_confirmation
-    # @purchase = Purchase.new(price: purchase_params[:price])
     @items = Item.find(params[:item_id]) # 指定した商品の購入画面が表示される
-    # @address = Address.new
   end
 
   def purchase
-    # @items
     # Save Purchese
     @purchase = Purchase.new(user_id: current_user.id, item_id: params[:id])
-    # @purchase = Purchase.new[:item]
     # Save Address
     @address = ItemPurchase.new(address_params)
-    # binding.pry
-    # @address = ItemPurchase.new(params.permit(:postal_code, :area_id, :city, :prefectures, :building, :phone, :item_id))
-    # PUrchse Item at Payjp (pay_item?)
 
     # 以下をじっこうする
     pay_item
     # @purchaseと@addressをほぞんしていく
-    # binding.pry
     if @purchase.valid?
-      # @purchase.save
       @address.save
       redirect_to root_path
     else
@@ -80,8 +70,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    # binding.pry
-    # params.permit(
     params.require(:item).permit(
       :image,
       :name,
@@ -105,17 +93,13 @@ class ItemsController < ApplicationController
   end
 
   def purchase_params
-    # binding.pry
-    # params.require(:price, :token).permit(params[:id])
     params.permit(:price, :token)
   end
 
   def pay_item
-    # binding.pry
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    # customer_token = current_user.purchase.customer_token
     Payjp::Charge.create(
-      # @itemｓのpriceをもってくる
+      # @itemsのpriceをもってくる
       amount: @items.price,
       card: purchase_params[:token],
       currency: 'jpy'
@@ -133,7 +117,6 @@ class ItemsController < ApplicationController
       :area_id,
       :deliverytime_id,
       :price,
-      #:purchase_id,
       :postal_code,
       :area_id,
       :prefectures,
