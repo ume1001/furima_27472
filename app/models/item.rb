@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :deliverytime
 
   belongs_to :user
-  has_one :item_order
+  has_one :purchase
+  has_one :address
 
   has_one_attached :image
 
@@ -24,6 +25,4 @@ class Item < ApplicationRecord
     validates :area_id
     validates :deliverytime_id
   end
-
-  has_one :item_purchase
 end

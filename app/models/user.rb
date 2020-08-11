@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :comments
-  has_many :item_purchases
+  has_many :purchases
 
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }
