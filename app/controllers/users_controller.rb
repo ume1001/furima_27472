@@ -13,15 +13,6 @@ class UsersController < ApplicationController
     params.create(user_params)
   end
 
-  def destroy
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
   def show
     @item = Item.find(params[:id])
   end

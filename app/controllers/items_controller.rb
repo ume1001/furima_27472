@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
+  before_action :move_to_index_item, only: [:purchase_confirmation]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -45,8 +46,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase_confirmation
+    @items = Item.find(params[:item_id]) # 指定した商品の購入画面が表示される
+  end
+
   def purchase
-    @items.update(purchase_id: current_user.id)
+    # Save Purchese
+    @purchase = Purchase.new(user_id: current_user.id, item_id: params[:id])
+    # Save Address
+    @address = ItemPurchase.new(address_params)
+
+    # 以下をじっこうする
+    pay_item
+    # @purchaseと@addressをほぞんしていく
+    if @purchase.valid?
+      @address.save
+      redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   private
@@ -72,5 +90,45 @@ class ItemsController < ApplicationController
 
   def find_item
     @items = Item.find(params[:id]) # 購入する商品を特定
+  end
+
+  def purchase_params
+    params.permit(:price, :token)
+  end
+
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      # @itemsのpriceをもってくる
+      amount: @items.price,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
+  end
+
+  def address_params
+    params.permit(
+      :image,
+      :name,
+      :text,
+      :category_id,
+      :status_id,
+      :deliveryfee_id,
+      :area_id,
+      :deliverytime_id,
+      :price,
+      :postal_code,
+      :area_id,
+      :prefectures,
+      :city,
+      :building,
+      :phone,
+      :item_id
+    ).merge(user_id: current_user.id, item_id: params[:id])
+  end
+
+  def move_to_index_item
+    @items = Item.find(params[:item_id])
+    return redirect_to root_path if user_signed_in? && current_user.id == @items.user.id
   end
 end
