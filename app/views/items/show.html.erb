@@ -8,7 +8,7 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag (@items.image) %>
-      <% if @items.purchase = nil %> 
+      <% if @items.purchase != nil %> 
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
