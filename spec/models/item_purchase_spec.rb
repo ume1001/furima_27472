@@ -56,13 +56,14 @@ RSpec.describe ItemPurchase, type: :model do
         @item_purchase.building = nil
         expect(@item_purchase).to be_valid
       end
-    end
 
-    context 'buyer' do
-      before do
-        it '出品者は購入できない' do
-          expect(response).to redirect_to(root_path)
-        end
+      it "出品者は購入できない" do
+        #はじめにsellerを登録
+        seller = create(:user)
+        #登録したユーザーと同じユーザーを生成
+        buyer = build(:item_purchase, user_id: @item_purchase.user_id)
+        buyer.valid?
+        expect(buyer.errors[:user_id]).to include()
       end
     end
   end
