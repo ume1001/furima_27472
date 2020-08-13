@@ -29,9 +29,9 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
-- has_one :address
+- has_one :addresses
 - has_many :comments
-- has_many :purchases
+- has_one :purchases
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -49,6 +49,7 @@
 |postal_code|integer|null: false|
 |area|integer|null: false|
 |city|integer|null: false|
+|prefectures|integer|null: false|
 |building|text|null: false|
 |phone|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
