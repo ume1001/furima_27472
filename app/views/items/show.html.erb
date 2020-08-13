@@ -31,6 +31,7 @@
     <% end%>
 
     <% if user_signed_in? && current_user.id != @items.user_id %> 
+      <% else @items.purchase != nil %>
       <%= link_to '購入画面に進む', item_purchase_confirmation_path(@items), method: :get, class:"item-red-btn"%>
     <% end %>
 
