@@ -13,7 +13,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :item_purchases
+- has_many :purchases
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -22,15 +22,16 @@
 |name|string|null: false|
 |text|text|null: false|
 |status|integer|null: false|
-|deliveryFee|integer|null: false|
+|deliveryfee|integer|null: false|
 |area|integer|null: false|
+|deliverytime|integer|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belong_to :user
-- has_many :addresses
+- has_one :addresses
 - has_many :comments
-- has_many :item_purchases
+- has_one :purchases
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -48,14 +49,14 @@
 |postal_code|integer|null: false|
 |prefectures|integer|null: false|
 |city|integer|null: false|
-|address|text|null: false|
+|prefectures|integer|null: false|
 |building|text|null: false|
 |phone|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 
-## item_purchasesテーブル
+## purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
