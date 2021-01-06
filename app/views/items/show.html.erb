@@ -30,9 +30,9 @@
       <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
     <% end%>
 
-    <% if user_signed_in? && current_user.id != @items.user_id %> 
-      <% else @items.purchase != nil %>
-      <%= link_to '購入画面に進む', item_purchase_confirmation_path(@items), method: :get, class:"item-red-btn"%>
+    <% if user_signed_in? && current_user.id == @items.user_id %> 
+      <% elsif @items.purchase == nil %>
+        <%= link_to '購入画面に進む', item_purchase_confirmation_path(@items), method: :get, class:"item-red-btn"%>
     <% end %>
 
     <div class="item-explain-box">
